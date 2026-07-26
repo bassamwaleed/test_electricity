@@ -45,7 +45,7 @@
                 <svg class="w-8 h-8 md:w-10 md:h-10 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 <h1 class="text-2xl md:text-3xl font-bold text-white">اختبار الكفاءة: فني كهرباء باور وكنترول</h1>
             </div>
-            <p class="text-blue-200 mt-2 text-sm md:text-base">تطبيقات الصناعات الثقيلة ومصانع الصلب</p>
+            <p class="text-blue-200 mt-2 text-sm md:text-base">تطبيقات الصناعات الثقيلة  </p>
             <!-- Progress Bar (Hidden initially) -->
             <div id="progress-container" class="absolute bottom-0 left-0 h-1.5 bg-blue-800 w-full hidden">
                 <div id="progress-bar" class="h-full bg-yellow-400 w-0 transition-all duration-300"></div>
@@ -63,7 +63,7 @@
 
                 <!-- قسم تحديد النطاق الجديد -->
                 <div class="mb-6 bg-slate-700/30 p-3.5 rounded-lg border border-slate-600 max-w-xs mx-auto">
-                    <h3 class="text-white mb-1 font-bold text-sm text-center">تحديد نطاق الأسئلة (اختياري)</h3>
+                    <h3 class="text-white mb-1 font-bold text-sm text-center">حدد عدد الاسئله ال انت عايزها </h3>
                     <p class="text-xs text-slate-400 text-center mb-3">كل قسم يحتوي على 50 سؤال.</p>
                     <div class="flex items-center justify-center gap-4 text-slate-200 text-sm font-medium">
                         <div class="flex items-center gap-1.5">
@@ -75,7 +75,7 @@
                             <input type="number" id="end-q" value="50" min="1" max="50" class="w-14 bg-slate-800 border border-slate-500 rounded-md px-2 py-1 text-white text-center focus:outline-none focus:border-blue-500 transition">
                         </div>
                     </div>
-                    <p id="range-error" class="text-red-400 text-xs mt-2 text-center hidden">الرجاء إدخال نطاق صحيح!</p>
+                    <p id="range-error" class="text-red-400 text-xs mt-2 text-center hidden">الرجاء إدخال عدد صحيح يا هندسه!</p>
                 </div>
                 <!-- نهاية قسم تحديد النطاق -->
 
@@ -115,28 +115,28 @@
 
             <div id="quiz-screen" class="hidden fade-in w-full">
                 <!-- زر العودة للرئيسية -->
-                <div class="mb-4 text-right">
+                <div class="mb-3 text-right">
                     <button onclick="restartQuiz()" class="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-white transition bg-slate-700/50 hover:bg-slate-700 py-1.5 px-4 rounded-lg border border-slate-600">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                         العودة لاختيار المستوى
                     </button>
                 </div>
 
-                <div class="flex justify-between items-center mb-6 text-sm text-slate-400 font-medium border-b border-slate-700 pb-2">
+                <div class="flex justify-between items-center mb-4 text-sm text-slate-400 font-medium border-b border-slate-700 pb-2">
                     <span id="question-counter">السؤال 1 من 15</span>
                     <span id="score-display">النقاط: 0</span>
                 </div>
                 
-                <h2 id="question-text" class="text-xl md:text-2xl font-bold mb-6 text-white leading-relaxed">
+                <h2 id="question-text" class="text-lg md:text-xl font-bold mb-4 text-white leading-relaxed">
                     <!-- Question goes here -->
                 </h2>
 
-                <div id="options-container" class="space-y-3 mb-8">
+                <div id="options-container" class="space-y-2 mb-4">
                     <!-- Options go here -->
                 </div>
 
-                <div class="flex justify-end mt-4">
-                    <button id="next-btn" onclick="nextQuestion()" class="hidden bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold py-2.5 px-6 rounded-lg shadow-md transition disabled:opacity-50">
+                <div class="flex justify-end mt-2">
+                    <button id="next-btn" onclick="nextQuestion()" class="hidden bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold py-2 px-6 rounded-lg shadow-md transition disabled:opacity-50 text-sm md:text-base">
                         التالي
                     </button>
                 </div>
@@ -1900,13 +1900,15 @@
             // Create options
             currentQ.options.forEach((option, index) => {
                 const btn = document.createElement('button');
-                btn.className = 'w-full text-right p-4 bg-slate-700 hover:bg-slate-600 rounded-lg border border-slate-600 transition duration-200 cursor-pointer flex items-center group';
+                // تقليل الـ padding من p-4 إلى p-3
+                btn.className = 'w-full text-right p-3 bg-slate-700 hover:bg-slate-600 rounded-lg border border-slate-600 transition duration-200 cursor-pointer flex items-center group';
                 
                 const letters = ['أ', 'ب', 'ج', 'د'];
                 
+                // تصغير حجم الدائرة التي تحتوي على الحرف وتصغير الخط قليلاً
                 btn.innerHTML = `
-                    <span class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center ml-4 text-slate-400 group-hover:text-white font-bold">${letters[index]}</span>
-                    <span class="text-slate-200">${option}</span>
+                    <span class="w-7 h-7 rounded-full bg-slate-800 flex items-center justify-center ml-3 text-slate-400 group-hover:text-white font-bold text-sm shrink-0">${letters[index]}</span>
+                    <span class="text-slate-200 text-sm md:text-base">${option}</span>
                 `;
                 
                 btn.onclick = () => selectOption(index, btn);
@@ -1953,7 +1955,8 @@
             }
 
             const explanationDiv = document.createElement('div');
-            explanationDiv.className = `mt-4 p-4 rounded-lg text-sm fade-in ${selectedIndex === correctIndex ? 'bg-green-900/50 text-green-200 border border-green-800' : 'bg-red-900/50 text-red-200 border border-red-800'}`;
+            // تصغير مسافات صندوق التوضيح من mt-4 p-4 إلى mt-3 p-3
+            explanationDiv.className = `mt-3 p-3 rounded-lg text-sm fade-in ${selectedIndex === correctIndex ? 'bg-green-900/50 text-green-200 border border-green-800' : 'bg-red-900/50 text-red-200 border border-red-800'}`;
             explanationDiv.innerHTML = `<strong>توضيح:</strong> ${activeQuizData[currentQuestion].explanation}`;
             optionsContainer.appendChild(explanationDiv);
 
