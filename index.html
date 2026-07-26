@@ -127,18 +127,19 @@
                     <span id="score-display">النقاط: 0</span>
                 </div>
                 
-                <h2 id="question-text" class="text-lg md:text-xl font-bold mb-4 text-white leading-relaxed">
+                <h2 id="question-text" class="text-lg md:text-xl font-bold mb-3 text-white leading-relaxed">
                     <!-- Question goes here -->
                 </h2>
 
-                <div id="options-container" class="space-y-2 mb-4">
-                    <!-- Options go here -->
-                </div>
-
-                <div class="flex justify-end mt-2">
-                    <button id="next-btn" onclick="nextQuestion()" class="hidden bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold py-2 px-6 rounded-lg shadow-md transition disabled:opacity-50 text-sm md:text-base">
+                <!-- تم نقل زر التالي هنا فوق الاختيارات -->
+                <div class="flex justify-end mb-3">
+                    <button id="next-btn" onclick="nextQuestion()" class="hidden bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold py-1.5 px-8 rounded-lg shadow-md transition disabled:opacity-50 text-sm md:text-base">
                         التالي
                     </button>
+                </div>
+
+                <div id="options-container" class="space-y-2 mb-2">
+                    <!-- Options go here -->
                 </div>
             </div>
 
